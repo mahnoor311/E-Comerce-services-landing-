@@ -1,0 +1,948 @@
+
+  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrandName — Premium Products</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #b2a676;        /* CTA yellow */
+      --nav-grad-start: #8482a1;/* purple */
+      --nav-grad-end: #06b6d4;  /* cyan */
+      --card-shadow: 0 8px 24px rgba(16,24,40,0.08);
+      --cta-text: #071124;
+    }
+
+    html,body{ height:100%; }
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #0f172a;
+      scroll-behavior: smooth;
+      background: #fff;
+    }
+
+   .navbar {
+    background: linear-gradient(90deg, #b4c450, #a294ce);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    transition: all 0.3s ease-in-out;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Navbar links */
+  .navbar a {
+    color: white !important;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  /* Underline hover effect */
+  .navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #ffe93f;
+    transition: width 0.3s ease;
+  }
+
+  .navbar a:hover::after {
+    width: 100%;
+  }
+
+  /* Hover color effect */
+  .navbar a:hover {
+    color: #ffe93f !important;
+  }
+
+  /* Mobile menu background */
+  .navbar-collapse {
+  
+    animation: gradientShift 6s ease infinite;
+  }
+
+  /* Fix navbar toggler double box */
+  .navbar-toggler {
+    border: none;
+    background: transparent !important;
+  }
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  .navbar-toggler-icon {
+    background-image: none;
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    display: inline-block;
+  }
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  .navbar-toggler-icon::before {
+    top: -8px;
+  }
+  .navbar-toggler-icon::after {
+    top: 8px;
+  }
+
+#heroCarousel .carousel-item {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Full-screen carousel item */
+#heroCarousel .carousel-item {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay for better readability */
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+/* Caption at bottom */
+.bottom-caption {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Title */
+.carousel-title {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.carousel-text {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+/* Remove Bootstrap's default carousel-caption positioning */
+.carousel-caption {
+  position: static;
+  padding: 0;
+  margin: 0;
+}
+
+/* Always use our bottom-caption rules */
+.bottom-caption {
+  position: absolute !important; /* override Bootstrap */
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+
+/* Animation */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translate(-50%, 40px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Tablet adjustments */
+@media (max-width: 992px) {
+  .carousel-title { font-size: 2.2rem; }
+  .carousel-text { font-size: 1.05rem; }
+  .bottom-caption { bottom: 6%; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 576px) {
+  #heroCarousel .carousel-item { height: 80vh; }
+  .carousel-title { font-size: 1.6rem; }
+  .carousel-text { font-size: 0.9rem; }
+  .bottom-caption { bottom: 5%; padding: 0 1rem; }
+}
+
+
+/* Button Styling */
+.btn-cta {
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,105,180,0.7);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translate(-50%, 40px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+/* Badge */
+.badge-feature {
+  background: linear-gradient(90deg, #f7971e, #ffd200);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* CTA Button */
+.btn-cta {
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,105,180,0.7);
+}
+
+/* Explore More Arrow */
+.explore-arrow {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  animation: bounce 1.5s infinite;
+  text-decoration: none;
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -10px); }
+}
+
+
+    
+    /* CTA button (used site-wide) */
+    .btn-cta {
+      background: linear-gradient(90deg, #ffd54a, #ffdd57);
+      color: var(--cta-text);
+      border-radius: 999px;
+      padding: .6rem 1.25rem;
+      font-weight:600;
+      box-shadow: 0 8px 20px rgba(255,221,87,0.12);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .btn-cta:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(255,221,87,0.16);
+      filter: brightness(1.02);
+    }
+    .btn-cta:active{ transform: translateY(-2px) scale(.99); }
+
+    /* subtle animated glow for attention (optional) */
+    @keyframes softGlow {
+      0% { box-shadow: 0 6px 18px rgba(255,221,87,0.08); }
+      50% { box-shadow: 0 20px 40px rgba(255,221,87,0.12); }
+      100% { box-shadow: 0 6px 18px rgba(255,221,87,0.08); }
+    }
+    .btn-cta.pulse { animation: softGlow 3.6s ease-in-out infinite; }
+
+    /* SECTIONS */
+    section { padding: 4.25rem 0; }
+    .section-title { font-weight:700; margin-bottom:1.6rem; }
+
+    /* product card */
+    .product-card{
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: var(--card-shadow);
+      background:#fff;
+    }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(2,6,23,0.08); }
+    .product-card img{ width:90%; height:200px; object-fit:cover; display:block; }
+/* Pricing Cards */
+.price-card {
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle background animation effect */
+.price-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at top left, rgba(255,221,87,0.15), transparent 60%);
+  transform: rotate(25deg);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+.price-card:hover::before {
+  opacity: 1;
+}
+
+.price-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.price-card .price-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.price-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #6b7280;
+}
+
+.price-card .btn-cta {
+  width: 100%;
+  background: linear-gradient(90deg, #7485ab, #b2658a);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.price-card .btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(238, 9, 121, 0.3);
+}
+
+/* Hover effect */
+.price-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(238, 9, 121, 0.12);
+}
+
+/* Special highlight for middle card */
+.price-card:nth-child(2) {
+  background: linear-gradient(180deg, #fdf4ff, #eef2ff);
+  border: 2px solid #c084fc;
+}
+.price-card:nth-child(2) .price-amount {
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.price-card:nth-child(2) .btn-cta {
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+}
+.price-card:nth-child(2) .btn-cta:hover {
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  .price-card {
+    padding: 1.5rem;
+  }
+  .price-card h3 {
+    font-size: 1.2rem;
+  }
+  .price-card .price-amount {
+    font-size: 1.6rem;
+  }
+}
+
+ 
+
+   .testimonial-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Background gradients */
+.bg1 {
+  background: linear-gradient(135deg, #538282, #feb47b);
+}
+.bg2 {
+  background: linear-gradient(135deg, #a291b5, #4f5b70);
+}
+.bg3 {
+  background: linear-gradient(135deg, #a6ad80, #1c5294);
+}
+
+.stars {
+  font-size: 1.2rem;
+}
+
+/* Make responsive */
+@media (max-width: 576px) {
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+  .stars {
+    font-size: 1rem;
+  }
+}
+/* Carousel controls styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100% 100%;
+  background-color: transparent;
+}
+
+/* Wrapper for the icons */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #ff4b1f, #1fddff);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+  
+}
+
+
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* Make icons white */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+/* CONTACT SECTION */
+#contact {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #ced2c6, #b0c5c9);
+  animation: bgShift 8s ease infinite;
+    margin-bottom: 3rem;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#contact .section-title {
+  font-weight: 700;
+  color: #0f172a;
+  position: relative;
+}
+
+#contact .section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: var(--nav-grad-start);
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* FORM STYLING */
+#contact form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+#contact .form-control {
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+#contact .form-control:focus {
+  border-color: var(--nav-grad-end);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3);
+}
+
+/* BUTTON */
+#contact .btn-cta {
+  background: linear-gradient(90deg, #7c6f89, #70707b);
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  transition:background 0.4s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+
+#contact .btn-cta:hover {
+  transform: scale(1.03);
+  background: linear-gradient(90deg, var(--nav-grad-end), var(--nav-grad-start));
+}
+
+/* INFO BOX */
+#contact .bg-light {
+  background: white !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+#contact .bg-light:hover {
+  transform: translateY(-4px);
+}
+
+/* ANIMATIONS */
+[data-aos="fade-right"],
+[data-aos="fade-left"] {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeIn 1s forwards ease;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Footer styling like navbar */
+footer {
+  background: linear-gradient(90deg, #ff4b1f, #1fddff);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+footer a {
+  color: white;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #ffe93f;
+  transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+  width: 100%;
+}
+
+footer a:hover {
+  color: #ffe93f;
+}
+
+/* Optional: footer social icons */
+footer .social-icons a {
+  display: inline-block;
+  margin: 0 8px;
+  font-size: 1.2rem;
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  transform: scale(1.2);
+  color: #ffe93f;
+}
+
+
+
+    
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-white" href="#">BrandName</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO CAROUSEL -->
+<header id="hero">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active" style="background-image:url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1600&auto=format&fit=crop');">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption bottom-caption">
+          <h1 class="carousel-title">Capture Every Moment</h1>
+          <p class="carousel-text">High-resolution camera designed for stunning photos, smooth videos, and effortless creativity.</p>
+          <a class="btn btn-cta mt-3" href="#products">Shop Cameras</a>
+        </div>
+      </div>
+       
+
+      <!-- Slide 2 -->
+      <div class="carousel-item" style="background-image:url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1600&auto=format&fit=crop');">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption bottom-caption">
+          <h1 class="carousel-title">Experience Premium Sound</h1>
+          <p class="carousel-text">Wireless headphones crafted for clarity, comfort, and long battery life.</p>
+          <a class="btn btn-cta mt-3" href="#products">Shop Headphones</a>
+        </div>
+      </div> 
+
+ 
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon rounded-circle bg-dark p-2" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon rounded-circle bg-dark p-2" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</header>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Best Sellers</h2>
+        <p class="muted">Quality products chosen by thousands of happy customers.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+          <div class="product-card">
+            <img src="./head2.jpg" alt="Wireless Headphones">
+            <div class="p-3">
+              <h5 class="mb-1">Wireless Headphones</h5>
+              <p class="muted mb-2" style="font-size:.95rem">Noise-canceling, 40hr battery.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <strong>$129</strong>
+                <a class="btn btn-sm btn-outline-dark" href="#pricing">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+          <div class="product-card">
+            <img src="./w3.jpg" alt="Smart Watch">
+            <div class="p-3">
+              <h5 class="mb-1">Smart Watch</h5>
+              <p class="muted mb-2" style="font-size:.95rem">Heart-rate, GPS, sleep tracking.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <strong>$199</strong>
+                <a class="btn btn-sm btn-outline-dark" href="#pricing">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="240">
+          <div class="product-card">
+            <img src="./gaming.jpg" alt="Gaming Console">
+            <div class="p-3">
+              <h5 class="mb-1">Gaming Console</h5>
+              <p class="muted mb-2" style="font-size:.95rem">Next-gen performance & exclusive titles.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <strong>$399</strong>
+                <a class="btn btn-sm btn-outline-dark" href="#pricing">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Pricing Plans</h2>
+        <p class="muted">Flexible plans for every customer — try risk-free.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="80">
+          <div class="price-card text-center">
+            <h3>Basic</h3>
+            <div class="price-amount">$19<span class="muted">/mo</span></div>
+            <p class="muted mb-3">Perfect for individual buyers</p>
+            <!-- pricing button uses same CTA style -->
+            <a class="btn btn-cta" href="#contact">Choose</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="160">
+          <div class="price-card text-center" style="background: linear-gradient(180deg,#f8fafc,#eef2ff);">
+            <h3>Standard</h3>
+            <div class="price-amount">$49<span class="muted">/mo</span></div>
+            <p class="muted mb-3">Best value for most customers</p>
+            <a class="btn btn-cta" href="#contact">Choose</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="240">
+          <div class="price-card text-center">
+            <h3>Premium</h3>
+            <div class="price-amount">$99<span class="muted">/mo</span></div>
+            <p class="muted mb-3">Full access + VIP support</p>
+            <a class="btn btn-cta" href="#contact">Choose</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section id="testimonials" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">What Customers Say</h2>
+      <p class="muted">Real reviews from real people</p>
+    </div>
+
+    <div id="testiCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#testiCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#testiCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#testiCarousel" data-bs-slide-to="2"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="testimonial-card bg1 mx-auto text-white text-center p-4 rounded-4 shadow-lg" style="max-width:720px;">
+            <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+            <p>"Amazing product collection — the headphones changed the way I work. Fast delivery and great support!"</p>
+            <h6 class="mt-3 fw-bold">Sarah J.</h6>
+            <small>Entrepreneur</small>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="testimonial-card bg2 mx-auto text-white text-center p-4 rounded-4 shadow-lg" style="max-width:720px;">
+            <div class="stars mb-2">⭐⭐⭐⭐</div>
+            <p>"Console performance is flawless — visuals and load times are incredible. Highly recommended!"</p>
+            <h6 class="mt-3 fw-bold">Mike R.</h6>
+            <small>Gamer</small>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="testimonial-card bg3 mx-auto text-white text-center p-4 rounded-4 shadow-lg" style="max-width:720px;">
+            <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+            <p>"Stylish products and great value. The smartwatch is both beautiful and useful."</p>
+            <h6 class="mt-3 fw-bold">Lisa W.</h6>
+            <small>Designer</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#testiCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testiCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6" data-aos="fade-right">
+          <h3 class="section-title">Get early access & offers</h3>
+          <p class="muted">Sign up to receive exclusive deals and product news.</p>
+          <form class="row g-2" onsubmit="event.preventDefault(); alert('Thanks! we will contact you.');">
+            <div class="col-12 col-sm-6">
+              <input class="form-control" placeholder="Full name" required>
+            </div>
+            <div class="col-12 col-sm-6">
+              <input class="form-control" type="email" placeholder="Email address" required>
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" rows="3" placeholder="Message (optional)"></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-cta">Join Now</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-left">
+          <div class="bg-light p-4 rounded-3">
+            <h5 class="mb-2">Why choose us?</h5>
+            <ul class="muted small mb-0">
+              <li>30-day money back guarantee</li>
+              <li>Free shipping over $99</li>
+              <li>24/7 friendly customer support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container text-center">
+      <p class="mb-1">© <span id="year"></span> BrandName — All rights reserved.</p>
+      <small class="muted">Designed for your internship — responsive, animated, production-ready UI.</small>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Init AOS animations
+    AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
+
+    // Navbar scroll effect
+    (function(){
+      const nav = document.getElementById('mainNav');
+      function updateNav(){
+        if(window.scrollY > 50){
+          nav.classList.add('nav-shrink');
+          nav.classList.remove('nav-transparent');
+        } else {
+          nav.classList.remove('nav-shrink');
+          nav.classList.add('nav-transparent');
+        }
+      }
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive:true });
+    })();
+
+    // Ensure carousel instances exist and allow pause on hover
+    (function(){
+      const heroEl = document.getElementById('heroCarousel');
+      if (heroEl) {
+        const hero = bootstrap.Carousel.getOrCreateInstance(heroEl, { interval: 4500, pause: 'hover' });
+        heroEl.addEventListener('mouseenter', ()=> hero.pause());
+        heroEl.addEventListener('mouseleave', ()=> hero.cycle());
+      }
+
+      const testiEl = document.getElementById('testiCarousel');
+      if (testiEl) {
+        const testi = bootstrap.Carousel.getOrCreateInstance(testiEl, { interval: 5000, pause: 'hover' });
+        testiEl.addEventListener('mouseenter', ()=> testi.pause());
+        testiEl.addEventListener('mouseleave', ()=> testi.cycle());
+      }
+    })();
+  </script>
+</body>
+</html>
